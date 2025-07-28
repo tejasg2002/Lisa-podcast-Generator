@@ -1,0 +1,24 @@
+[app]
+name = "lisa-podcast"
+
+[image]
+python_version = "3.10"
+
+[secrets]
+# Add your secret environment variables here
+OPENAI_API_KEY = "${OPENAI_API_KEY}"
+ELEVENLABS_API_KEY = "${ELEVENLABS_API_KEY}"
+HEYGEN_API_KEY = "${HEYGEN_API_KEY}"
+AWS_ACCESS_KEY_ID = "${AWS_ACCESS_KEY_ID}"
+AWS_SECRET_ACCESS_KEY = "${AWS_SECRET_ACCESS_KEY}"
+AWS_S3_BUCKET = "${AWS_S3_BUCKET}"
+
+[function.generate_audio_podcast_modal]
+gpu = "any"
+concurrency_limit = 8
+
+[function.generate_video_podcast_modal]
+gpu = "any"
+concurrency_limit = 8
+
+timeout = 3600 
