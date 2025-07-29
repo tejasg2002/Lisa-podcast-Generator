@@ -23,5 +23,8 @@ python-dotenv>=1.0.0
 # Additional utilities
 typing-extensions>=4.8.0
 
-# Modal deployment
-modal>=1.1.0 
+# Modal deployment platform
+modal>=1.1.0
+
+# Audio/Video processing (for local development)
+# Note: FFmpeg is installed via apt in Modal deployment 

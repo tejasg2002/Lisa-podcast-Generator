@@ -6,14 +6,15 @@ An AI-powered podcast generator that creates audio and video podcasts using Open
 
 - **Audio Podcasts**: Generate audio-only podcasts with AI voices
 - **Video Podcasts**: Create video podcasts with AI avatars
-- **Multi-language Support**: English and Hindi
+- **Multi-language Support**: English and Hindi with modern conversational dialogue
 - **Concurrent Processing**: Fast generation with parallel processing
-- **Cloud Deployment**: Ready for Modal 1.1 deployment
+- **Cloud Deployment**: Ready for Modal 1.1 deployment with auto-scaling
+- **Cost Optimized**: Idle when not in use, scales up on demand
 
 ## 📋 Prerequisites
 
 - Python 3.10+
-- FFmpeg installed
+- FFmpeg installed (for local development)
 - API keys for:
   - OpenAI
   - ElevenLabs
@@ -43,7 +44,7 @@ ELEVENLABS_API_KEY=your-elevenlabs-key
 HEYGEN_API_KEY=your-heygen-key
 AWS_ACCESS_KEY_ID=your-aws-key
 AWS_SECRET_ACCESS_KEY=your-aws-secret
-AWS_S3_BUCKET=your-s3-bucket
+AWS_S3_BUCKET_NAME=your-s3-bucket
 ```
 
 ## 🚀 Modal 1.1 Deployment
@@ -58,28 +59,24 @@ python deploy.py
 
 #### 1. Set Modal Secrets
 ```bash
-modal secret create lisa-secrets \
+python -m modal secret create lisa-podcast-secrets \
   OPENAI_API_KEY="your-openai-key" \
   ELEVENLABS_API_KEY="your-elevenlabs-key" \
   HEYGEN_API_KEY="your-heygen-key" \
   AWS_ACCESS_KEY_ID="your-aws-key" \
   AWS_SECRET_ACCESS_KEY="your-aws-secret" \
-  AWS_S3_BUCKET="your-s3-bucket"
+  AWS_S3_BUCKET_NAME="your-s3-bucket"
 ```
 
 #### 2. Deploy to Modal
 ```bash
 # Deploy the complete FastAPI application
-modal deploy modal_app.py::fastapi_app
-
-# Or deploy individual functions
-modal deploy modal_app.py::audio_podcast_function
-modal deploy modal_app.py::video_podcast_function
+python -m modal deploy modal_app.py
 ```
 
 #### 3. Get Deployment URL
 ```bash
-modal app list
+python -m modal app list
 ```
 
 ## 📡 API Usage
@@ -87,7 +84,7 @@ modal app list
 ### Audio Podcast Generation
 
 ```bash
-curl -X POST "https://your-app.modal.run/v1/lisa-audio-podcast" \
+curl -X POST "https://lu-labs--lisa-podcast-generator-fastapi-app.modal.run/v1/lisa-audio-podcast" \
   -H "Content-Type: application/json" \
   -d '{
     "input_type": "idea",
@@ -110,7 +107,7 @@ curl -X POST "https://your-app.modal.run/v1/lisa-audio-podcast" \
 ### Video Podcast Generation
 
 ```bash
-curl -X POST "https://your-app.modal.run/v1/lisa-video-podcast" \
+curl -X POST "https://lu-labs--lisa-podcast-generator-fastapi-app.modal.run/v1/lisa-video-podcast" \
   -H "Content-Type: application/json" \
   -d '{
     "input_type": "idea",
@@ -145,7 +142,8 @@ The application is configured for Modal 1.1 with:
 - **FastAPI App**: `cpu=2, memory=4096MB, timeout=300s`
 - **Audio Function**: `cpu=2, memory=4096MB, max_containers=5`
 - **Video Function**: `cpu=4, memory=8192MB, max_containers=3`
-- **Auto-scaling**: `min_containers=1` for each function
+- **Auto-scaling**: `min_containers=0` (starts idle, scales up on demand)
+- **Cost Optimization**: Only runs when requests come in
 
 ### Environment Variables
 
@@ -156,24 +154,24 @@ The application is configured for Modal 1.1 with:
 | `HEYGEN_API_KEY` | Heygen API key for video generation | ✅ |
 | `AWS_ACCESS_KEY_ID` | AWS access key for S3 uploads | ✅ |
 | `AWS_SECRET_ACCESS_KEY` | AWS secret key for S3 uploads | ✅ |
-| `AWS_S3_BUCKET` | S3 bucket name for file storage | ✅ |
+| `AWS_S3_BUCKET_NAME` | S3 bucket name for file storage | ✅ |
 
 ## 📊 Monitoring
 
 ### View Logs
 ```bash
-modal app logs lisa-podcast-generator
+python -m modal app logs lisa-podcast-generator
 ```
 
 ### Check Status
 ```bash
-modal app list
-modal app status lisa-podcast-generator
+python -m modal app list
+python -m modal app status lisa-podcast-generator
 ```
 
 ### Monitor Resources
 ```bash
-modal app metrics lisa-podcast-generator
+python -m modal app metrics lisa-podcast-generator
 ```
 
 ## 🏗️ Architecture
@@ -199,6 +197,20 @@ modal app metrics lisa-podcast-generator
 - **Heygen**: Unlimited concurrent video generation
 - **Modal Scaling**: Auto-scales based on demand
 
+## 🎙️ Language Features
+
+### English Podcasts
+- Modern conversational dialogue
+- Code-switching with Hindi words in Devanagari script
+- Youth-friendly expressions and slang
+- Natural speech patterns
+
+### Hindi Podcasts
+- Modern conversational Hindi (not formal/old-fashioned)
+- Contemporary expressions and casual language
+- Natural code-switching with English
+- Devanagari script for proper pronunciation
+
 ## 🐛 Troubleshooting
 
 ### Common Issues
@@ -214,19 +226,19 @@ modal app metrics lisa-podcast-generator
 2. **API Key Errors**
    ```bash
    # Check Modal secrets
-   modal secret list
+   python -m modal secret list
    
    # Update secrets
-   modal secret update lisa-secrets
+   python -m modal secret update lisa-podcast-secrets
    ```
 
 3. **Deployment Failures**
    ```bash
    # Check Modal status
-   modal app list
+   python -m modal app list
    
    # View detailed logs
-   modal app logs lisa-podcast-generator
+   python -m modal app logs lisa-podcast-generator
    ```
 
 ### Performance Optimization
@@ -235,6 +247,7 @@ modal app metrics lisa-podcast-generator
 - **Video Podcasts**: ~2-5 minutes generation time
 - **Concurrent Requests**: Up to 10 simultaneous users
 - **Auto-scaling**: Handles traffic spikes automatically
+- **Cost Efficiency**: Idle when not in use
 
 ## 📝 License
 
@@ -251,6 +264,12 @@ This project is licensed under the MIT License.
 ## 📞 Support
 
 For issues and questions:
-- Check the logs: `modal app logs lisa-podcast-generator`
+- Check the logs: `python -m modal app logs lisa-podcast-generator`
 - Review the documentation
-- Open an issue on GitHub 
+- Open an issue on GitHub
+
+## 🚀 Live Deployment
+
+**Current Status**: ✅ Deployed and Running
+**URL**: `https://lu-labs--lisa-podcast-generator-fastapi-app.modal.run`
+**Dashboard**: `https://modal.com/apps/lu-labs/main/deployed/lisa-podcast-generator` 
