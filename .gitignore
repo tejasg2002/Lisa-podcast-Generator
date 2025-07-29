@@ -155,29 +155,11 @@ cython_debug/
 # PyCharm
 #  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
 #  be added to the global gitignore or merged into this project gitignore.  For a PyCharm
-#  project, it is recommended to include the following files in version control:
-#  - .idea/modules.xml
-#  - .idea/*.iml
-#  - .idea/misc.xml
-#  - .idea/vcs.xml
-#  - .idea/workspace.xml
-#  - .idea/tasks.xml
-#  - .idea/usage.statistics.xml
-#  - .idea/shelf
-#  - .idea/compiler.xml
-#  - .idea/libraries/
-#  - .idea/jarRepositories.xml
-#  - .idea/artifacts/
-#  - .idea/shelf/
-#  - .idea/workspace.xml
-#  - .idea/tasks.xml
-#  - .idea/usage.statistics.xml
-#  - .idea/compiler.xml
-#  - .idea/libraries/
-#  - .idea/jarRepositories.xml
-#  - .idea/artifacts/
-#  - .idea/shelf/
-.idea/
+#  project, it is recommended to include the following files:
+#  .idea/
+#  *.iml
+#  *.ipr
+#  *.iws
 
 # VS Code
 .vscode/
@@ -187,28 +169,225 @@ cython_debug/
 .coverage
 htmlcov/
 
-# Application specific
-app.log
+# Logs
 *.log
 logs/
-temp/
+app.log
+
+# Temporary files
 tmp/
+temp/
+*.tmp
+*.temp
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Windows
+*.lnk
+
+# API Keys and Secrets
+.env
+.env.local
+.env.production
+.env.staging
+secrets.json
+config.json
+
+# AWS credentials
+.aws/
+aws-credentials.json
+
+# S3 uploads (temporary)
 uploads/
 downloads/
 
-# Media files
-*.mp3
+# FFmpeg temporary files
 *.mp4
+*.mp3
+*.avi
+*.mov
+*.wav
+*.flv
+*.mkv
+
+# Modal specific
+.modal/
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Cache directories
+.cache/
+__pycache__/
+*.pyc
+
+# IDE specific
+.idea/
+*.swp
+*.swo
+*~
+
+# Node modules (if using any frontend)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build outputs
+build/
+dist/
+*.egg-info/
+
+# Test coverage
+.coverage
+coverage.xml
+htmlcov/
+
+# Documentation
+docs/_build/
+site/
+
+# Local development
+local_settings.py
+settings_local.py
+
+# Docker
+.dockerignore
+Dockerfile.local
+
+# Kubernetes
+*.yaml
+*.yml
+!k8s/*.yaml
+!k8s/*.yml
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# Archive files
+*.zip
+*.tar.gz
+*.rar
+
+# Media files (for development)
+*.mp4
+*.mp3
 *.wav
 *.avi
 *.mov
 *.mkv
 *.flv
-*.webm
 
-# Temporary files
-*.tmp
-*.temp
+# Large files
+*.pkl
+*.h5
+*.hdf5
+*.model
+*.weights
+
+# Jupyter notebooks
+.ipynb_checkpoints/
+*.ipynb
+
+# R files (if any R integration)
+*.R
+*.RData
+*.Rhistory
+
+# MATLAB files (if any MATLAB integration)
+*.mat
+*.m
+
+# Julia files (if any Julia integration)
+*.jl
+
+# Rust files (if any Rust integration)
+Cargo.lock
+target/
+
+# Go files (if any Go integration)
+*.go
+go.sum
+go.mod
+
+# Java files (if any Java integration)
+*.java
+*.class
+*.jar
+
+# C/C++ files (if any C/C++ integration)
+*.c
+*.cpp
+*.h
+*.o
+*.so
+*.dll
+*.exe
+
+# Assembly files
+*.asm
+*.s
+
+# Shell scripts
+*.sh
+*.bash
+*.zsh
+
+# PowerShell scripts
+*.ps1
+*.psm1
+
+# Batch files
+*.bat
+*.cmd
+
+# Configuration files with sensitive data
+config.ini
+settings.ini
+secrets.ini
+
+# SSL certificates
+*.pem
+*.key
+*.crt
+*.csr
+*.p12
+*.pfx
+
+# SSH keys
+id_rsa
+id_rsa.pub
+*.ppk
+
+# GPG keys
+*.gpg
+*.asc
+
+# Backup and temporary files
+*~
+*.swp
+*.swo
+*#
+
+# Editor directories and files
+.vscode/
+.idea/
 *.swp
 *.swo
 *~
@@ -225,113 +404,33 @@ Thumbs.db
 # Windows
 *.lnk
 
-# API Keys and Secrets (additional protection)
-.env.local
-.env.production
-.env.staging
-.env.development
-secrets.json
-config.json
-
-# Database files
-*.db
-*.sqlite
-*.sqlite3
-
-# Backup files
-*.bak
-*.backup
-*.old
-
-# Cache directories
-.cache/
-cache/
-
-# Node modules (if using any frontend tools)
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Docker
-.dockerignore
-Dockerfile
-docker-compose.yml
-docker-compose.yaml
-
-# Kubernetes
-*.yaml
-*.yml
-!docker-compose.yml
-!docker-compose.yaml
-
-# Terraform
-*.tfstate
-*.tfstate.*
-.terraform/
-
-# AWS
-.aws/
-
-# Local development
-local/
-dev/
-development/
-
-# Test files
-test_*.py
-*_test.py
-tests/
-
-# Documentation builds
-docs/_build/
-site/
-
-# Jupyter notebooks
-*.ipynb
-
-# Profiling
-*.prof
-*.lprof
-
-# Coverage reports
-coverage.xml
-.coverage.*
-
-# mypy
-.mypy_cache/
-
-# Rope
-.ropeproject/
-
-# mkdocs
-site/
-
-# Pyre
-.pyre/
-
-# pytype
-.pytype/
-
-# Cython
-cython_debug/
-
-# Environment variables (additional protection)
-.env.*
-!.env.example
-
-# IDE files
-*.swp
-*.swo
+# Linux
 *~
 
-# OS files
-.DS_Store
-Thumbs.db
+# macOS
+.AppleDouble
+.LSOverride
 
-# Temporary application files
-inputs.txt
-*.mp3
-*.mp4
-temp_*
-tmp_* 
+# Icon must end with two \r
+Icon
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# End of https://www.gitignore.io/api/python,visualstudiocode,macos,windows,linux 

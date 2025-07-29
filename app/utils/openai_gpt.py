@@ -14,28 +14,24 @@ def generate_podcast_script(idea: str, host: str, guest: str, language: str, dur
     words_per_minute = 150
     target_words = duration_minutes * words_per_minute
     
-    if language == "hindi":
+    if language == "english":
         # For Hindi podcasts, use modern conversational Hindi
         prompt = (
-            f"Generate a podcast dialogue in MODERN HINDI between a female host named {host} "
+            f"Generate a podcast dialogue in MODERN ENGLISH between a female host named {host} "
             f"and a male guest named {guest} on the topic: '{idea}'. "
             f"The podcast should be approximately {duration_minutes} minutes long ({target_words} words).\n\n"
-            f"IMPORTANT: Use MODERN, CONVERSATIONAL Hindi that people actually speak today, NOT formal/old-fashioned Hindi.\n"
+            f"IMPORTANT: Use MODERN, CONVERSATIONAL ENGLISH that people actually speak today, NOT formal/old-fashioned English.\n"
             f"Use contemporary expressions, casual language, and natural speech patterns.\n\n"
-            f"Examples of modern Hindi:\n"
-            f"- 'यार, यह तो बहुत कूल है!' (instead of formal 'यह बहुत अच्छा है')\n"
-            f"- 'मैं तो बिल्कुल agree करता हूं' (mix of Hindi-English like people actually speak)\n"
-            f"- 'यह topic तो बहुत interesting है' (natural code-switching)\n"
-            f"- 'बस यही तो मैं कह रहा था!' (casual, everyday Hindi)\n\n"
+            f"Examples of modern English:\n"
             f"Format the dialogue as follows (NO ASTERISKS OR MARKDOWN):\n\n"
-            f"{host}: [host's dialogue in modern conversational Hindi]\n"
-            f"{guest}: [guest's dialogue in modern conversational Hindi]\n"
-            f"{host}: [host's dialogue in modern conversational Hindi]\n"
+            f"{host}: [host's dialogue in modern conversational English]\n"
+            f"{guest}: [guest's dialogue in modern conversational English]\n"
+            f"{host}: [host's dialogue in modern conversational English]\n"
             f"and so on...\n\n"
             f"Keep it conversational and engaging. Alternate between {host} and {guest}. "
             f"Make sure each line starts with the speaker's name followed by a colon. "
             f"Structure the conversation with an introduction, main discussion points, and conclusion. "
-            f"Use natural, modern Hindi expressions, slang, and code-switching that young people use today."
+            f"Use natural, modern English expressions, slang, and code-switching that young people use today."
         )
     else:
         # For English podcasts, mix English with modern Hindi words in Devanagari

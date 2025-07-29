@@ -21,4 +21,7 @@ openai>=1.3.0
 python-dotenv>=1.0.0
 
 # Additional utilities
-typing-extensions>=4.8.0 
+typing-extensions>=4.8.0
+
+# Modal deployment
+modal>=1.1.0 
